@@ -1,0 +1,99 @@
+:root {
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+
+  --white: #FFFFFF;
+  --greyLight-1: #E4EBF5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+}
+
+$shadow: .3rem .3rem .6rem var(--greyLight-2),
+-.2rem -.2rem .5rem var(--white);
+$inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
+inset -.2rem -.2rem .5rem var(--white);
+
+
+html {
+  box-sizing: border-box;
+  font-size: 200%; // 1rem = 10px    100% = 16px
+  background: var(--greyLight-1);
+}
+
+ul{
+  margin: auto;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  list-style: none;
+}
+
+li{
+  //display: flex;
+  //flex-direction: column;
+  //align-items: center;
+  position: relative; // Required for the absolute positioning of the banner
+}
+
+/*  BUTTONS  */
+.btn {
+  width: 100%;
+  height: 4rem;
+  border-radius: 1rem;
+  box-shadow: $shadow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: .3s ease;
+  background: var(--greyLight-1);
+
+  &__primary {
+    background: var(--primary);
+    box-shadow: inset .2rem .2rem 1rem var(--primary-light),
+    inset -.2rem -.2rem 1rem var(--primary-dark),
+    $shadow;
+    color: var(--greyLight-1);
+    margin: auto;
+    grid-column: span 3;
+    &:hover {
+      color: var(--white);
+    }
+
+    &:active {
+      box-shadow: inset .2rem .2rem 1rem var(--primary-dark),
+      inset -.2rem -.2rem 1rem var(--primary-light);
+    }
+  }
+
+  &__secondary {
+    color: var(--greyDark);
+    &:hover {
+      color: var(--primary);
+    }
+    &:active {
+      box-shadow: $inner-shadow;
+    }
+  }
+}
+.green-border{
+  border: palegreen 2px solid;
+}
+.blue-border{
+  border: darkcyan 2px solid;
+}
+
+.banner-installed {
+  position: absolute;
+  background: darkcyan; /* Adjust as needed */
+  color: white; /* Adjust as needed */
+  padding: 5px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50%;
+  border-radius: 8px;
+  /* More styles as needed */
+}

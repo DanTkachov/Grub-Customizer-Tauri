@@ -1,0 +1,87 @@
+:root {
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+  --white: #FFFFFF;
+  --greyLight-1: #E4EBF5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 200%;
+  background: var(--greyLight-1);
+}
+
+ul {
+  margin: auto;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  list-style: none;
+}
+
+li {
+  position: relative;
+}
+
+/*  BUTTONS  */
+.btn {
+  width: 100%;
+  height: 4rem;
+  border-radius: 1rem;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+  background: var(--greyLight-1);
+}
+.btn__primary {
+  background: var(--primary);
+  box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light), inset -0.2rem -0.2rem 1rem var(--primary-dark), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+  color: var(--greyLight-1);
+  margin: auto;
+  grid-column: span 3;
+}
+.btn__primary:hover {
+  color: var(--white);
+}
+.btn__primary:active {
+  box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark), inset -0.2rem -0.2rem 1rem var(--primary-light);
+}
+.btn__secondary {
+  color: var(--greyDark);
+}
+.btn__secondary:hover {
+  color: var(--primary);
+}
+.btn__secondary:active {
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+}
+
+.green-border {
+  border: palegreen 2px solid;
+}
+
+.blue-border {
+  border: darkcyan 2px solid;
+}
+
+.banner-installed {
+  position: absolute;
+  background: darkcyan; /* Adjust as needed */
+  color: white; /* Adjust as needed */
+  padding: 5px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50%;
+  border-radius: 8px;
+  /* More styles as needed */
+}
+
+/*# sourceMappingURL=styles.css.map */
