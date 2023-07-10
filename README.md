@@ -1,7 +1,9 @@
 # Grub Customizer
 
 This is my version of a grub customizer built with the intention to allow users to swap themes easily and quickly.
+
 Requires "sudo" to run properly 
+
 To-Do:
 - Add a "No theme" option
 - Render Thumbnails for themes properly (Currently unfinished)
