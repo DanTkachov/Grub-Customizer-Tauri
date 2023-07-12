@@ -48,9 +48,20 @@ fn current_installed_theme() -> String{
     current_theme.unwrap()
 }
 
+#[tauri::command]
+fn load_image(path: String) -> tauri::Result<String> {
+    use std::fs::read;
+    use base64::encode;
+
+    let bytes = read(path)?;
+    let encoded = encode(&bytes);
+    Ok(format!("data:image/png;base64,{}", encoded))
+}
+
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![log, list_themes, current_installed_theme, change_theme_to_selected])
+        .invoke_handler(tauri::generate_handler![log, list_themes, current_installed_theme, change_theme_to_selected, load_image])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 
