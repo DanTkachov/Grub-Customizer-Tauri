@@ -1,7 +1,22 @@
-# Tauri + Vanilla
+# Grub Customizer
 
-This template should help get you started developing with Tauri in vanilla HTML, CSS and Javascript.
+This is my version of a grub customizer built with the intention to allow users to swap themes easily and quickly.
 
-## Recommended IDE Setup
+Requires "sudo" to run properly 
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## Code
+
+The code used for finding a users filepaths (to themes and to grub config) is located in /src-tauri/paths.rs
+
+The rust bindings for javascript are found in /src-tauri/main.rs
+
+javascript code dictating buttons and banners are in /src/main.js
+
+HTML/SCSS is in /src/index.html and /src/styles.scss (compiled to css)
+
+
+## To-Do:
+- Add a "No theme" option
+- Render Thumbnails for themes properly (Currently unfinished)
+- Add a small banner to depict which theme is currently selected for the user (currently using a green border around the theme)
+- Add the ability to set wallpapers instead of a whole theme
