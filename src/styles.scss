@@ -8,6 +8,7 @@
   --greyLight-2: #c8d0e7;
   --greyLight-3: #bec8e4;
   --greyDark: #9baacf;
+  --greyDarker: #5B5E7E;
 }
 
 $shadow: .3rem .3rem .6rem var(--greyLight-2),
@@ -22,7 +23,7 @@ html {
   background: var(--greyLight-1);
 }
 
-ul{
+ul {
   margin: auto;
   width: 90%;
   display: grid;
@@ -31,7 +32,7 @@ ul{
   list-style: none;
 }
 
-li{
+li {
   //display: flex;
   //flex-direction: column;
   //align-items: center;
@@ -41,12 +42,14 @@ li{
 /*  BUTTONS  */
 .btn {
   width: 100%;
-  height: 4rem;
+  min-width: 400px;
   border-radius: 1rem;
+  min-height: 4rem;
   box-shadow: $shadow;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column-reverse;
   cursor: pointer;
   transition: .3s ease;
   background: var(--greyLight-1);
@@ -59,6 +62,7 @@ li{
     color: var(--greyLight-1);
     margin: auto;
     grid-column: span 3;
+
     &:hover {
       color: var(--white);
     }
@@ -70,19 +74,32 @@ li{
   }
 
   &__secondary {
-    color: var(--greyDark);
+    min-height: 11rem;
+    padding: 0 1rem;
+    color: var(--greyDarker);
+
     &:hover {
       color: var(--primary);
     }
+
     &:active {
       box-shadow: $inner-shadow;
     }
   }
+
+  img {
+    height: auto;
+    width: 100%;
+    border-radius: 16px;
+    object-fit: contain;
+  }
 }
-.green-border{
+
+.green-border {
   border: palegreen 2px solid;
 }
-.blue-border{
+
+.blue-border {
   border: darkcyan 2px solid;
 }
 

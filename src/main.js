@@ -10,7 +10,6 @@ function capitalizeFirstLetter(str) {
 }
 
 async function changeThemeToSelected(str) {
-    console.log('here\'s the string' + str)
     await invoke("change_theme_to_selected", {theme: str})
         .catch(error => {
             console.log(error);
@@ -32,25 +31,18 @@ async function current_installed_theme() {
 }
 
 async function createButton(theme, thumbnail) {
-    const cardDiv = document.createElement('div')
-    cardDiv.id = "button"
-
-    if (thumbnail) {
-        let imgSource = await invoke('load_image', {path: thumbnail});
-        const img = document.createElement('img');
-        img.src = imgSource;
-        img.width = 300;
-        img.height = 200;
-        cardDiv.appendChild(img);
-    }
     const selectionButton = document.createElement('button');
     selectionButton.type = "submit";
     selectionButton.classList.add('btn', 'btn__secondary')
     selectionButton.textContent = capitalizeFirstLetter(theme.slice(theme.lastIndexOf('/') + 1));
+    if (thumbnail) {
+        let imgSource = await invoke('load_image', {path: thumbnail});
+        const img = document.createElement('img');
+        img.src = imgSource;
+        selectionButton.appendChild(img);
+    }
 
-
-    cardDiv.appendChild(selectionButton)
-    return cardDiv
+    return selectionButton
 }
 
 async function list_themes() {
@@ -67,6 +59,11 @@ async function list_themes() {
     applyButton.classList.remove('btn__secondary')
     applyButton.classList.add('btn__primary');
     applyButton.id = 'apply-button';
+
+    const noThemeButton = await createButton('No Theme')
+    noThemeButton.id = 'no-theme-button'
+    listElement.appendChild(noThemeButton)
+
 
 
     // add each path as a new list item
@@ -102,20 +99,32 @@ async function list_themes() {
             listItem.appendChild(installed_banner)
             listItem.appendChild(selectionButton);
             listElement.appendChild(listItem);
-            listElement.appendChild(applyButton)
+
 
             buttons.push(selectionButton)
             console.log(buttons)
         }
 
-        // add apply button listener
-        // not sure why this goes after the for loop, rule doesn't apply to other buttons?
-        document.getElementById('apply-button').addEventListener("click", function (e) {
-            e.preventDefault();
-            changeThemeToSelected(selected_theme)
-            document.getElementById('apply-button').textContent = 'Theme changed to: ' + selected_theme;
-        });
+
+
     }
+    listElement.appendChild(applyButton)
+    // add apply button listener
+    // not sure why this goes after the for loop, rule doesn't apply to other buttons?
+    document.getElementById('apply-button').addEventListener("click", function (e) {
+        e.preventDefault();
+        changeThemeToSelected(selected_theme)
+        document.getElementById('apply-button').textContent = 'Theme changed to: ' + selected_theme;
+    });
+
+    // give the no-theme button a theme of NOTHEME
+    document.getElementById('no-theme-button').addEventListener("click", function (e) {
+        e.preventDefault();
+        selected_theme = "NOTHEME";
+        resetButtons();
+        changeThemeToSelected(selected_theme)
+        document.getElementById('apply-button').textContent = 'Theme erased! No theme installed';
+    });
 }
 
 

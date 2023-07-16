@@ -59,9 +59,10 @@ pub mod path {
                 Some(a) =>
                     {
                         if a.0 == "GRUB_THEME" {
-                            //println!("Test worked {}", a.1);
-                            //println!("Test worked now &str: {}", a.1.to_string());
                             return Ok(a.1.to_string());
+                        }
+                        if a.0 == "#GRUB_THEME" ||  a.0 == "# GRUB_THEME"{
+                            return Ok(String::from("No theme installed"));
                         }
                     }
                 _ => continue,
@@ -79,9 +80,14 @@ pub mod path {
 
         for line in reader.lines() {
             let line = line?;
-            if line.starts_with("GRUB_THEME=") {
+            // if line.starts_with("GRUB_THEME=" || "#GRUB_THEME" || "# GRUB_THEME") {
+            if ["GRUB_THEME=", "#GRUB_THEME", "# GRUB_THEME"].iter().any(|&s| line.starts_with(s)){
                 println!("{}", line.to_string());
-                lines.push(format!("{}{}{}", "GRUB_THEME=", theme, "/theme.txt"));
+                if theme == String::from("NOTHEME"){
+                    lines.push(format!("#GRUB_THEME="));
+                } else{
+                    lines.push(format!("{}{}{}", "GRUB_THEME=", theme, "/theme.txt"));
+                }
             } else {
                 lines.push(line);
             }
