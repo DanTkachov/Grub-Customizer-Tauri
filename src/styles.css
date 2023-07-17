@@ -12,15 +12,16 @@
 
 html {
   box-sizing: border-box;
-  font-size: 200%;
+  font-size: 250%;
   background: var(--greyLight-1);
+  padding-top: 20px;
 }
 
 ul {
   margin: auto;
   width: 90%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 400px));
   gap: 1rem;
   list-style: none;
 }
@@ -31,8 +32,9 @@ li {
 
 /*  BUTTONS  */
 .btn {
+  font-size: 50%;
   width: 100%;
-  min-width: 400px;
+  max-width: 450px;
   border-radius: 1rem;
   min-height: 4rem;
   box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
@@ -49,7 +51,7 @@ li {
   box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light), inset -0.2rem -0.2rem 1rem var(--primary-dark), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
   color: var(--greyLight-1);
   margin: auto;
-  grid-column: span 3;
+  grid-column: 1/-1;
 }
 .btn__primary:hover {
   color: var(--white);
@@ -75,12 +77,8 @@ li {
   object-fit: contain;
 }
 
-.green-border {
-  border: palegreen 2px solid;
-}
-
 .blue-border {
-  border: darkcyan 2px solid;
+  border: darkcyan 4px solid;
 }
 
 .banner-installed {
@@ -92,7 +90,21 @@ li {
   transform: translate(-50%, -50%);
   font-size: 50%;
   border-radius: 8px;
-  /* More styles as needed */
+}
+
+.green-border {
+  border: mediumseagreen 5px solid;
+}
+
+.banner-selected {
+  position: absolute;
+  background: mediumseagreen; /* Adjust as needed */
+  color: white; /* Adjust as needed */
+  padding: 5px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50%;
+  border-radius: 8px;
 }
 
 /*# sourceMappingURL=styles.css.map */

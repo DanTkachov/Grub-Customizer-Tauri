@@ -3,7 +3,7 @@
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 pub mod paths;
-use paths::path::{current_theme, change_theme, get_paths, sudo_update_grub, Thumbnail};
+use paths::path::{current_theme, change_theme, get_paths, sudo_update_grub};
 
 #[tauri::command]
 fn log(message: &str) -> String{
@@ -14,6 +14,7 @@ fn log(message: &str) -> String{
 fn list_themes() -> Vec<String>{
     // This will return a string as such:
     // [theme_name, image_path_of_prev_entry, theme_name, etc etc]
+    // thats why in the main.js file, i do i%2 for the buttons
     let mut res : Vec<String> = Vec::new();
     let themes = get_paths(); // this returns a Vec<Thumbnail>
     for theme in themes {
