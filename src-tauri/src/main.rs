@@ -61,6 +61,7 @@ fn load_image(path: String) -> tauri::Result<String> {
 
 
 fn main() {
+    // run using "sass src/styles.scss src/styles.css && cargo tauri dev
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![log, list_themes, current_installed_theme, change_theme_to_selected, load_image])
         .run(tauri::generate_context!())

@@ -97,8 +97,8 @@ async function list_themes() {
 
             const listItem = document.createElement('li')
             listItem.appendChild(installed_banner)
-            listItem.appendChild(selectionButton);
             listItem.appendChild(selected_banner)
+            listItem.appendChild(selectionButton);
             listElement.appendChild(listItem);
 
             // add button to the button list
